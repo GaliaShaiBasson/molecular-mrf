@@ -12,8 +12,8 @@ Written by Nikita Vladimirov, some modifications by Or Perlman and built on and 
 
 ## Installation
 Run the following command inside the terminal (preferably in a clean conda env or similar):
-
-`pip install -e .`
+`python scripts/install_pypulseq.py`
+`python -m pip install -e .`
 
 The argument `-e` allows installation in editable mode, so you can change sources inside your local copy.
 

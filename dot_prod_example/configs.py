@@ -81,6 +81,19 @@ class ConfigPreclinical(Config):
         config['cest_pool']['Amine']['f'] = np.arange(10, 125, 5) * 3 / 110000
         config['cest_pool']['Amine']['f'] = config['cest_pool']['Amine']['f'].tolist()
 
+        # MT pool - Galia
+        # Based on MR fingerprinting for semisolid magnetization transfer
+        # and chemical exchange saturation transfer quantification
+        # Table 1: f_ss ranges ~3.4% to 19.8%, k_ssw ~10Hz to 68Hz
+        config['mt_pool'] = {}
+        config['mt_pool']['t1'] = [1.0]                                 # Fixed
+        config['mt_pool']['t2'] = [10e-6]                               # Fixed - short T2
+        config['mt_pool']['k'] = np.arange(10, 81, 15).tolist()         # 10Hz to 80Hz
+        config['mt_pool']['dw'] = [-3.5]                                # ppm - center of the MT pool
+        config['mt_pool']['f'] = (np.arange(2, 21, 3) / 100).tolist()   # 2% to 20%
+        config['mt_pool']['lineshape'] = 'SuperLorentzian'
+
+        
         # Fill initial magnetization info
         # this is important now for the mrf simulation! For the regular pulseq-cest
         # simulation, we usually assume athat the magnetization reached a steady
